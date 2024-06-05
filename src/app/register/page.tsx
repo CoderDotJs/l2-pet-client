@@ -17,7 +17,7 @@ import { userLogin } from "@/services/actions/userLogin";
 import { storeUserInfo } from "@/services/auth.services";
 
 //zod Validation
-export const patientValidationSchema = z
+const patientValidationSchema = z
   .object({
     userName: z.string().min(1, "User Name Required!"),
     email: z
