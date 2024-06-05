@@ -1,19 +1,19 @@
-'use client';
-import ReuseableForm from '@/components/Forms/ReuseableForm';
-import ReuseableInput from '@/components/Forms/ReuseableInput';
-import { useChangePasswordMutation } from '@/redux/api/authApi';
+"use client";
+import ReuseableForm from "@/components/Forms/ReuseableForm";
+import ReuseableInput from "@/components/Forms/ReuseableInput";
+import { useChangePasswordMutation } from "@/redux/api/authApi";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Grid } from '@mui/material';
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { FieldValues } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Grid } from "@mui/material";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const validationSchema = z.object({
-  oldPassword: z.string().min(6, 'Must be at least 6 characters long'),
-  newPassword: z.string().min(6, 'Must be at least 6 characters long'),
+  oldPassword: z.string().min(6, "Must be at least 6 characters long"),
+  newPassword: z.string().min(6, "Must be at least 6 characters long"),
 });
 
 const ChangePassword = () => {
@@ -26,12 +26,12 @@ const ChangePassword = () => {
       // console.log(res, 'RESPONSE');
       if (res?.message) {
         toast.success(res?.message);
-        router.push('/myprofile');
+        router.push("/myprofile");
       } else {
-        throw new Error('Incorrect Old Password');
+        throw new Error("Incorrect Old Password");
       }
     } catch (error) {
-      toast.error('Incorrect Password !');
+      toast.error("Incorrect Password !");
       // console.log(error);
     }
   };
@@ -65,10 +65,9 @@ const ChangePassword = () => {
                 placeholder="Enter Your New Password"
               />
               <Button
-              
                 fullWidth
                 type="submit"
-                sx={{ border: '1px solid gray', color: 'Blue' , my:4}}
+                sx={{ border: "1px solid gray", color: "Blue", my: 4 }}
               >
                 Submit
               </Button>

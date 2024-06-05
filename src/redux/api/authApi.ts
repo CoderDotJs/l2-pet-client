@@ -1,16 +1,25 @@
-import { baseApi } from './baseApi';
+import { baseApi } from "./baseApi";
 
 const extendedApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createAdoption: build.mutation({
       query: (data) => ({
-        url: '/pets/adoptions',
-        method: 'POST',
+        url: "/pets/adoptions",
+        method: "POST",
         data: data,
       }),
-      invalidatesTags: ['user'],
+      invalidatesTags: ["user"],
+    }),
+    changePassword: build.mutation({
+      query: (data) => ({
+        url: "/auth/change-password",
+        method: "POST",
+        data: data,
+      }),
+      invalidatesTags: ["user"],
     }),
   }),
 });
 
-export const { useCreateAdoptionMutation } = extendedApi;
+export const { useCreateAdoptionMutation, useChangePasswordMutation } =
+  extendedApi;
