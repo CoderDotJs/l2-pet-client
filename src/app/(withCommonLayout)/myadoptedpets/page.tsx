@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Button,
@@ -8,15 +8,15 @@ import {
   Pagination,
   Stack,
   Typography,
-} from '@mui/material';
-import Image from 'next/image';
-import React from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Link from 'next/link';
-import { toast } from 'sonner';
-import { useGetSingleAdoptionQuery } from '@/redux/api/adoptionApi';
-import { useGetAllPetsQuery } from '@/redux/api/petsApi';
+} from "@mui/material";
+import Image from "next/image";
+import React from "react";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Link from "next/link";
+import { toast } from "sonner";
+import { useGetSingleAdoptionQuery } from "@/redux/api/adoptionApi";
+import { useGetAllPetsQuery } from "@/redux/api/petsApi";
 const MyAdoptPage = () => {
   const { data, isLoading } = useGetSingleAdoptionQuery({});
   const { data: petData, isLoading: petLoading } = useGetAllPetsQuery({});
@@ -56,8 +56,8 @@ const MyAdoptPage = () => {
                       <Image
                         className="mx-auto w-[280px] h-[200px]"
                         src={
-                          item?.pet?.photos ||
-                          'https://www.invoicera.com/wp-content/uploads-webpc/uploads/2023/11/default-image.jpg.webp'
+                          item?.photos?.[0] ??
+                          "https://vinatap.vn/templates/not-found.png"
                         }
                         alt="my lost items"
                         width={320}
@@ -79,8 +79,8 @@ const MyAdoptPage = () => {
                       </Typography>
                       <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         <span className="font-extrabold">
-                          {' '}
-                          AdditionalInfo:{' '}
+                          {" "}
+                          AdditionalInfo:{" "}
                         </span>
                         {item?.additionalInfo}
                       </Typography>
@@ -89,7 +89,7 @@ const MyAdoptPage = () => {
                         {item?.status}
                       </Typography>
                       <Link href={`/allpets/edit/${item?.pet?.id}`}>
-                        <Button sx={{ border: '1px solid blue' }}>
+                        <Button sx={{ border: "1px solid blue" }}>
                           View Details
                         </Button>
                       </Link>
@@ -97,7 +97,7 @@ const MyAdoptPage = () => {
                         <Link href={`/mylostitems/edit/${item.id}`}>
                           <Button endIcon={<EditIcon />} sx={{ mx: 2 }} />
                         </Link>
-    
+
                         <Button
                           onClick={() => handleDelete(item?.id)}
                           endIcon={<DeleteForeverIcon />}

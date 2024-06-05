@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useGetAllPetsQuery } from '@/redux/api/petsApi';
-import { useDebounced } from '@/redux/hooks';
+import { useGetAllPetsQuery } from "@/redux/api/petsApi";
+import { useDebounced } from "@/redux/hooks";
 import {
   Box,
   Button,
@@ -14,26 +14,26 @@ import {
   Stack,
   TextField,
   Typography,
-} from '@mui/material';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useState } from 'react';
+} from "@mui/material";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState } from "react";
 
 const AllPetsData = () => {
-  const petType = ['dog', 'cat', 'cow', 'bird', 'others'];
-  const gender = ['MALE', 'FEMALE'];
-  const specialNeeds = ['true', 'false'];
-  const size = ['small', 'medium', 'large'];
+  const petType = ["dog", "cat", "cow", "bird", "others"];
+  const gender = ["MALE", "FEMALE"];
+  const specialNeeds = ["true", "false"];
+  const size = ["small", "medium", "large"];
   const query: Record<string, any> = {};
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [petTypeSelect, setPetTypeSelect] = useState<string>('');
-  const [sizeSelect, setSizeSelect] = useState<string>('');
-  const [genderSelect, setGenderSelect] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [petTypeSelect, setPetTypeSelect] = useState<string>("");
+  const [sizeSelect, setSizeSelect] = useState<string>("");
+  const [genderSelect, setGenderSelect] = useState<string>("");
   const [page, setPage] = React.useState(1);
   const [limit, setLimit] = React.useState(10);
   let pageCount: number = 0;
-  query['page'] = page;
-  query['limit'] = limit;
+  query["page"] = page;
+  query["limit"] = limit;
 
   const debounceTerm = useDebounced({
     searchTerm: searchTerm,
@@ -41,17 +41,17 @@ const AllPetsData = () => {
   });
 
   if (!!debounceTerm) {
-    query['searchTerm'] = searchTerm;
+    query["searchTerm"] = searchTerm;
   }
   if (petTypeSelect) {
-    query['petType'] = petTypeSelect;
+    query["petType"] = petTypeSelect;
   }
   if (genderSelect) {
-    query['gender'] = genderSelect;
+    query["gender"] = genderSelect;
   }
 
   if (sizeSelect) {
-    query['size'] = sizeSelect;
+    query["size"] = sizeSelect;
   }
 
   //   console.log(query, '===');
@@ -76,7 +76,7 @@ const AllPetsData = () => {
 
   return (
     <div className=" pt-28 text-black">
-      <Box sx={{ margin: '0 auto ', mx: '20px' }}>
+      <Box sx={{ margin: "0 auto ", mx: "20px" }}>
         <Grid container spacing={2}>
           <Grid item md={3} xs={12}>
             <h1 className="text-3xl font-bold mx-auto text-center ">
@@ -95,16 +95,16 @@ const AllPetsData = () => {
                 placeholder="Category"
                 InputLabelProps={{
                   sx: {
-                    color: 'black',
+                    color: "black",
                   },
                 }}
               >
                 {petType.map((item) => (
                   <MenuItem
                     sx={{
-                      '&.MuiMenuItem-root': {
-                        justifyContent: 'flex-start',
-                        color: 'black',
+                      "&.MuiMenuItem-root": {
+                        justifyContent: "flex-start",
+                        color: "black",
                       },
                     }}
                     key={item}
@@ -127,16 +127,16 @@ const AllPetsData = () => {
                 placeholder="Category"
                 InputLabelProps={{
                   sx: {
-                    color: 'black',
+                    color: "black",
                   },
                 }}
               >
                 {size.map((item) => (
                   <MenuItem
                     sx={{
-                      '&.MuiMenuItem-root': {
-                        justifyContent: 'flex-start',
-                        color: 'black',
+                      "&.MuiMenuItem-root": {
+                        justifyContent: "flex-start",
+                        color: "black",
                       },
                     }}
                     key={item}
@@ -159,16 +159,16 @@ const AllPetsData = () => {
                 placeholder="Category"
                 InputLabelProps={{
                   sx: {
-                    color: 'black',
+                    color: "black",
                   },
                 }}
               >
                 {gender.map((item) => (
                   <MenuItem
                     sx={{
-                      '&.MuiMenuItem-root': {
-                        justifyContent: 'flex-start',
-                        color: 'black',
+                      "&.MuiMenuItem-root": {
+                        justifyContent: "flex-start",
+                        color: "black",
                       },
                     }}
                     key={item}
@@ -194,7 +194,7 @@ const AllPetsData = () => {
       </Box>
 
       {/* <Grid container spacing={2} py={4} > */}
-      <Box sx={{ margin: '0 auto ', px: '80px' }}>
+      <Box sx={{ margin: "0 auto ", px: "80px" }}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5 py-10 ">
           {isLoading ? (
             <h1 className="text-center mx-auto text-3xl text-white py-48">
@@ -207,8 +207,8 @@ const AllPetsData = () => {
                   <Image
                     className="mx-auto w-[280px] h-[200px]"
                     src={
-                      item?.photos ||
-                      'https://www.invoicera.com/wp-content/uploads-webpc/uploads/2023/11/default-image.jpg.webp'
+                      item?.photos?.[0] ??
+                      "https://vinatap.vn/templates/not-found.png"
                     }
                     alt="pet photos"
                     width={320}
@@ -247,9 +247,9 @@ const AllPetsData = () => {
                   <Link href={`/allpets/edit/${item.id}`}>
                     <Button
                       sx={{
-                        border: '1px solid blue',
-                        padding: '5px 20px',
-                        mx: '3px',
+                        border: "1px solid blue",
+                        padding: "5px 20px",
+                        mx: "3px",
                       }}
                     >
                       View
@@ -258,9 +258,9 @@ const AllPetsData = () => {
                   <Link href={`/allpets/${item.id}`}>
                     <Button
                       sx={{
-                        border: '1px solid blue',
-                        padding: '5px 20px',
-                        mx: '3px',
+                        border: "1px solid blue",
+                        padding: "5px 20px",
+                        mx: "3px",
                       }}
                     >
                       Adoption Pet
@@ -272,7 +272,7 @@ const AllPetsData = () => {
           )}
         </div>
         <Stack spacing={2} className="flex justify-center items-center ">
-          <Typography sx={{ font: 'bold', color: 'white' }}>
+          <Typography sx={{ font: "bold", color: "white" }}>
             Page: {page}
           </Typography>
           <Pagination count={pageCount} page={page} onChange={handleChange} />
