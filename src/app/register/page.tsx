@@ -32,7 +32,7 @@ const patientValidationSchema = z
   });
 
 //default value's
-export const defatultvalues = {
+const defatultvalues = {
   userName: "",
   email: "",
   password: "",
