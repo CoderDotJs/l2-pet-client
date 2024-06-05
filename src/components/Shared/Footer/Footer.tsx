@@ -2,7 +2,7 @@ import { Box, Container } from "@mui/material";
 
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className="bg-white dark:bg-gray-900" id="about">
       <div className="mx-auto w-full">
         <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4  max-w-screen-xl mx-auto">
           <div>

@@ -1,15 +1,15 @@
-'use client';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+"use client";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
 import {
   Avatar,
   Button,
@@ -18,15 +18,15 @@ import {
   MenuItem,
   TextField,
   Tooltip,
-} from '@mui/material';
-import Image from 'next/image';
-import logo from '@/assets/logo3.png';
-import AuthButton from '@/components/UI/AuthButton/AuthButton';
-import Link from 'next/link';
-import { getUserInfo } from '@/services/auth.services';
+} from "@mui/material";
+import Image from "next/image";
+import logo from "@/assets/logo3.png";
+import AuthButton from "@/components/UI/AuthButton/AuthButton";
+import Link from "next/link";
+import { getUserInfo } from "@/services/auth.services";
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ["Products", "Pricing", "Blog"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const drawerWidth = 240;
 
@@ -42,7 +42,7 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         <Link href="/">
           <Image
@@ -57,22 +57,16 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
 
       <Divider />
       <List>
-        <Link href={''} className="mx-8 block py-4">
+        <Link href={""} className="mx-8 block py-4">
           Home
         </Link>
-        {userInfo.role === 'admin' && (
-          <Link href={'/dashboard/admin'} className="mx-8 block py-4">
+        {userInfo.role === "admin" && (
+          <Link href={"/dashboard/admin"} className="mx-8 block py-4">
             Dashboard
           </Link>
         )}
-        <Link href={'/#about'} className="mx-8 block py-4">
+        <Link href={"/#about"} className="mx-8 block py-4">
           About Us
-        </Link>
-        <Link href={''} className="mx-8 block py-4">
-          My Profile
-        </Link>
-        <Link href={''} className="mx-8 block py-4">
-          Lost Items
         </Link>
         {/* <TextField
           fullWidth={true}
@@ -216,14 +210,14 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
     <>
       <Box sx={{}}>
         <CssBaseline />
-        <AppBar component="nav" sx={{ backgroundColor: '#5c5e62' }}>
+        <AppBar component="nav" sx={{ backgroundColor: "#5c5e62" }}>
           <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={{ mr: 2, display: { sm: "none" } }}
             >
               <MenuIcon />
             </IconButton>
@@ -231,7 +225,7 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               <Link href="/">
                 <Image
@@ -245,19 +239,22 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
 
             <Box
               sx={{
-                display: { xs: 'none', sm: 'flex' },
-                alignItems: { sm: 'center', xs: 'center' },
-                justifyContent: { sm: 'center', xs: 'center' },
+                display: { xs: "none", sm: "flex" },
+                alignItems: { sm: "center", xs: "center" },
+                justifyContent: { sm: "center", xs: "center" },
               }}
             >
-              <Link href={'/'} className="mx-8 ">
+              <Link href={"/"} className="mx-8 ">
                 Home
               </Link>
-              <Link href={'/#about'} className="mx-8">
+              <Link href={"/allpets"} className="mx-8">
+                Pets
+              </Link>
+              <Link href={"/#about"} className="mx-8">
                 About Us
               </Link>
-              {userInfo.role === 'admin' && (
-                <Link href={'/dashboard/admin'} className="mx-8 block py-4">
+              {userInfo.role === "admin" && (
+                <Link href={"/dashboard/admin"} className="mx-8 block py-4">
                   Dashboard
                 </Link>
               )}
@@ -286,9 +283,9 @@ const Navber = ({ children }: { children: React.ReactNode }) => {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: 'block', sm: 'none' },
-              '& .MuiDrawer-paper': {
-                boxSizing: 'border-box',
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
                 width: drawerWidth,
               },
             }}
